@@ -3,6 +3,7 @@ name: Deploy to Azure Container Instance
 
 jobs:
     build-and-deploy:
+        environment: demo
         runs-on: ubuntu-latest
         steps:
         # checkout the repo
@@ -26,12 +27,12 @@ jobs:
         - name: 'Deploy to Azure Container Instances'
           uses: 'azure/aci-deploy@v1'
           with:
-            resource-group: healthlabs-web
-            dns-name-label: healthlabs-web
-            image: docker.pkg.github.com/rohitdemo/healthlabs-web/healthlabs-web-docker-image
+            resource-group: rohitnbdemo-asp-vue-demo
+            dns-name-label: rohitnbdemo-asp-vue-demo
+            image: docker.pkg.github.com/rohitdemo/asp-vue-demo/asp-vue-demo-image
             registry-login-server: docker.pkg.github.com
             registry-username: ${{ secrets.REGISTRY_USERNAME }}
             registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-            name: healthlabs-web-container
+            name: rohitnbdemo-asp-vue-demo-web-container
             location: 'west us'
             ports: 80
